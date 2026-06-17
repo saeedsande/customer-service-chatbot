@@ -1,0 +1,57 @@
+# Customer Service Chatbot
+
+## Overview
+
+This project is a Customer Service Chatbot developed using Python and Flask. The chatbot helps users by answering common customer service queries such as shipping information, refund policies, order tracking, account management, and customer support details.
+
+## Features
+
+* Customer Query Handling
+* Order Tracking Assistance
+* Refund & Return Information
+* Shipping Information
+* Account Support
+* Interactive Chat Interface
+* NLP-based Keyword Matching
+
+## Technologies Used
+
+* Python
+* Flask
+* HTML
+* CSS
+* JSON
+
+## Project Structure
+
+Customer-Service-Chatbot/
+
+├── app.py
+
+├── chatbot.py
+
+├── intents.json
+
+├── requirements.txt
+
+├── README.md
+
+├── templates/
+
+│ └── index.html
+
+└── static/
+
+└── style.css
+
+## Future Improvements
+
+* AI-Powered Responses
+* Database Integration
+* User Authentication
+* Voice Assistant Support
+
+## Author
+
+Saeed Ismail Sande
+B.Tech Computer Science Engineering
