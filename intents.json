@@ -2,153 +2,88 @@
   "intents": [
     {
       "tag": "greeting",
-      "patterns": ["Hi", "Hello", "Hey", "Good morning", "Good evening"],
-      "responses": ["Hello! How can I assist you today?", "Welcome! How may I help you?"]
+      "patterns": ["hi", "hello", "hey"],
+      "responses": ["Hello! How can I help you today?"]
     },
     {
       "tag": "goodbye",
-      "patterns": ["Bye", "Goodbye", "See you later", "Take care"],
-      "responses": ["Goodbye! Have a great day.", "Thanks for visiting. See you soon!"]
+      "patterns": ["bye", "goodbye"],
+      "responses": ["Goodbye! Have a great day."]
     },
     {
       "tag": "thanks",
-      "patterns": ["Thanks", "Thank you", "Much appreciated"],
-      "responses": ["You're welcome!", "Happy to help!"]
+      "patterns": ["thanks", "thank you"],
+      "responses": ["You're welcome!"]
     },
     {
       "tag": "shipping",
-      "patterns": ["Shipping time", "Delivery details", "When will my order arrive"],
-      "responses": ["Orders are usually delivered within 3–5 business days."]
-    },
-    {
-      "tag": "delivery_delay",
-      "patterns": ["My order is delayed", "Late delivery", "Order not arrived"],
-      "responses": ["We apologize for the delay. Please provide your order ID for assistance."]
+      "patterns": ["shipping", "delivery", "shipping time"],
+      "responses": ["Orders are usually delivered within 3-5 business days."]
     },
     {
       "tag": "refund",
-      "patterns": ["Refund policy", "Return product", "Can I get my money back"],
+      "patterns": ["refund", "money back", "refund policy"],
       "responses": ["Refunds can be requested within 7 days of delivery."]
     },
     {
-      "tag": "return_process",
-      "patterns": ["How do I return an item", "Return process", "Return my order"],
-      "responses": ["You can initiate a return from your account under 'My Orders'."]
-    },
-    {
-      "tag": "order_status",
-      "patterns": ["Track my order", "Order status", "Where is my order"],
-      "responses": ["Please provide your order ID to check the current status."]
+      "tag": "track_order",
+      "patterns": ["track order", "order status", "where is my order"],
+      "responses": ["Please provide your order ID to track your order."]
     },
     {
       "tag": "cancel_order",
-      "patterns": ["Cancel my order", "Order cancellation", "Stop my order"],
-      "responses": ["Orders can be cancelled before they are shipped."]
+      "patterns": ["cancel order", "stop order"],
+      "responses": ["Orders can be cancelled before shipment."]
     },
     {
-      "tag": "payment_methods",
-      "patterns": ["Payment options", "Accepted payments", "How can I pay"],
-      "responses": ["We accept Credit Cards, Debit Cards, UPI, Net Banking, and Wallets."]
+      "tag": "payment",
+      "patterns": ["payment options", "payment methods", "upi"],
+      "responses": ["We support Credit Card, Debit Card, UPI and Net Banking."]
     },
     {
-      "tag": "payment_failed",
-      "patterns": ["Payment failed", "Transaction failed", "Unable to pay"],
-      "responses": ["If payment has failed, please try again or contact your bank."]
-    },
-    {
-      "tag": "contact_support",
-      "patterns": ["Customer support", "Need help", "Contact support"],
+      "tag": "support",
+      "patterns": ["support", "help", "contact support"],
       "responses": ["You can reach us at support@example.com."]
     },
     {
       "tag": "working_hours",
-      "patterns": ["Working hours", "Support hours", "Customer care timing"],
-      "responses": ["Our support team is available Monday–Saturday, 9 AM to 6 PM."]
+      "patterns": ["working hours", "support hours"],
+      "responses": ["Support is available Monday to Saturday, 9 AM to 6 PM."]
     },
     {
-      "tag": "product_availability",
-      "patterns": ["Is this product available", "Stock availability", "In stock"],
-      "responses": ["Product availability can be checked directly on the product page."]
+      "tag": "account",
+      "patterns": ["create account", "register", "sign up"],
+      "responses": ["Click on Sign Up to create a new account."]
     },
     {
-      "tag": "discounts",
-      "patterns": ["Any discounts", "Promo codes", "Offers available"],
-      "responses": ["Current promotions are listed on our homepage."]
+      "tag": "password",
+      "patterns": ["forgot password", "reset password"],
+      "responses": ["Use the Forgot Password option to reset your password."]
     },
     {
-      "tag": "account_creation",
-      "patterns": ["Create account", "Register", "Sign up"],
-      "responses": ["You can register by clicking the Sign Up button on the homepage."]
-    },
-    {
-      "tag": "password_reset",
-      "patterns": ["Forgot password", "Reset password", "Can't login"],
-      "responses": ["Use the 'Forgot Password' option to reset your password."]
-    },
-    {
-      "tag": "update_profile",
-      "patterns": ["Change profile", "Update account details", "Edit profile"],
-      "responses": ["Profile details can be updated from the Account Settings page."]
-    },
-    {
-      "tag": "change_address",
-      "patterns": ["Change delivery address", "Update address", "Wrong address"],
+      "tag": "address",
+      "patterns": ["change address", "update address"],
       "responses": ["You can update your address before the order is shipped."]
     },
     {
-      "tag": "international_shipping",
-      "patterns": ["Do you ship internationally", "International delivery", "Overseas shipping"],
-      "responses": ["Yes, international shipping is available for selected countries."]
+      "tag": "discount",
+      "patterns": ["discount", "offers", "promo code"],
+      "responses": ["Current offers are available on our homepage."]
     },
     {
-      "tag": "warranty",
-      "patterns": ["Warranty information", "Product warranty", "Guarantee"],
-      "responses": ["Warranty details vary by product and are listed on the product page."]
-    },
-    {
-      "tag": "exchange",
-      "patterns": ["Exchange product", "Replace item", "Product replacement"],
-      "responses": ["Products can be exchanged within 7 days if eligible."]
-    },
-    {
-      "tag": "bulk_orders",
-      "patterns": ["Bulk purchase", "Corporate orders", "Large quantity order"],
-      "responses": ["For bulk orders, please contact our sales team."]
-    },
-    {
-      "tag": "technical_issue",
-      "patterns": ["Website not working", "Technical issue", "App crash"],
-      "responses": ["We apologize for the inconvenience. Our technical team is investigating."]
-    },
-    {
-      "tag": "feedback",
-      "patterns": ["Give feedback", "Share feedback", "Leave a review"],
-      "responses": ["We value your feedback. Please share your experience with us."]
-    },
-    {
-      "tag": "privacy_policy",
-      "patterns": ["Privacy policy", "How is my data used", "Data protection"],
-      "responses": ["Our Privacy Policy is available on our website."]
-    },
-    {
-      "tag": "about_company",
-      "patterns": ["Tell me about your company", "About us", "Who are you"],
-      "responses": ["We are dedicated to providing excellent products and customer service."]
+      "tag": "company",
+      "patterns": ["about company", "about us", "who are you"],
+      "responses": ["We are dedicated to delivering excellent customer service."]
     },
     {
       "tag": "location",
-      "patterns": ["Where are you located", "Company address", "Office location"],
+      "patterns": ["location", "office address"],
       "responses": ["Our headquarters are located in India."]
     },
     {
       "tag": "faq",
-      "patterns": ["Frequently asked questions", "FAQ", "Help center"],
-      "responses": ["You can find answers to common questions in our Help Center."]
-    },
-    {
-      "tag": "default",
-      "patterns": ["Random question"],
-      "responses": ["I'm sorry, I couldn't understand that. Could you rephrase your question?"]
+      "patterns": ["faq", "help center"],
+      "responses": ["Visit our Help Center for frequently asked questions."]
     }
   ]
 }

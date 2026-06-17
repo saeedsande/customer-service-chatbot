@@ -9,9 +9,14 @@ def home():
 
 @app.route("/get", methods=["POST"])
 def chatbot_response():
+
     user_message = request.form["msg"]
+
     response = get_response(user_message)
-    return jsonify({"response": response})
+
+    return jsonify({
+        "response": response
+    })
 
 if __name__ == "__main__":
     app.run(debug=True)

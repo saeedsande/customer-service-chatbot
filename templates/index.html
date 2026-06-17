@@ -1,102 +1,355 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Service Chatbot</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+SmartAssist AI Support Platform
+</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static',
+filename='style.css') }}">
+
 </head>
+
 <body>
+
+<div class="app-container">
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <h1>🤖 SmartAssist</h1>
+
+        <div class="profile-card">
+
+            <div class="profile-avatar">
+                👤
+            </div>
+
+            <h3>Guest User</h3>
+
+            <p>Customer Support Session</p>
+
+            <span class="status">
+                ● Online
+            </span>
+
+        </div>
+
+        <div class="stat-card">
+            <h2>30+</h2>
+            <p>Support Intents</p>
+        </div>
+
+        <div class="stat-card">
+            <h2>24/7</h2>
+            <p>Availability</p>
+        </div>
+
+        <div class="stat-card">
+            <h2>NLP</h2>
+            <p>Intent Matching</p>
+        </div>
+
+        <div class="quick-actions">
+
+            <button onclick="fillText('Track my order')">
+                📦 Track Order
+            </button>
+
+            <button onclick="fillText('Refund policy')">
+                💰 Refund
+            </button>
+
+            <button onclick="fillText('Shipping time')">
+                🚚 Shipping
+            </button>
+
+            <button onclick="fillText('Contact support')">
+                📞 Support
+            </button>
+
+        </div>
+
+        <button class="export-btn"
+        onclick="downloadChat()">
+        📄 Export Chat
+        </button>
+
+    </div>
+
+    <!-- Chat Area -->
 
     <div class="chat-container">
 
         <div class="chat-header">
-            🤖 Customer Service Chatbot
+
+            <div class="avatar">
+                🤖
+            </div>
+
+            <div>
+
+                <h2>
+                    AI Customer Support Assistant
+                </h2>
+
+                <p>
+                    Online • Ready to Help
+                </p>
+
+            </div>
+
         </div>
 
-        <div class="chat-box" id="chatbox">
+        <div class="categories">
+
+            <span>Orders</span>
+            <span>Refunds</span>
+            <span>Payments</span>
+            <span>Shipping</span>
+            <span>Accounts</span>
+
+        </div>
+
+        <div class="chat-box"
+        id="chatbox">
 
             <div class="message bot-message">
-                Hello! 👋 Welcome to our customer support service. How can I help you today?
+
+                👋 Welcome to SmartAssist.
+
+                <br><br>
+
+                Try asking:
+
+                <br>
+
+                • Refund policy
+
+                <br>
+
+                • Shipping information
+
+                <br>
+
+                • Track my order
+
+                <br>
+
+                • Account support
+
             </div>
 
         </div>
 
         <div class="input-area">
+
             <input
-                type="text"
-                id="userInput"
-                placeholder="Type your message..."
-                onkeypress="handleKeyPress(event)"
+
+            type="text"
+
+            id="userInput"
+
+            placeholder=
+            "Ask about refunds, shipping, orders..."
+
+            onkeypress=
+            "handleKeyPress(event)"
+
             >
 
-            <button onclick="sendMessage()">Send</button>
+            <button onclick=
+            "sendMessage()">
+
+            ➤
+
+            </button>
+
         </div>
 
     </div>
 
+</div>
+
 <script>
 
-function handleKeyPress(event) {
-    if (event.key === "Enter") {
-        sendMessage();
-    }
+function fillText(text){
+
+document.getElementById(
+"userInput"
+).value=text;
+
 }
 
-function sendMessage() {
+function handleKeyPress(event){
 
-    let userInput = document.getElementById("userInput");
-    let message = userInput.value.trim();
+if(event.key==="Enter"){
 
-    if (message === "") {
-        return;
-    }
+sendMessage();
 
-    let chatbox = document.getElementById("chatbox");
+}
 
-    // User Message
-    let userDiv = document.createElement("div");
-    userDiv.className = "message user-message";
-    userDiv.innerText = message;
-    chatbox.appendChild(userDiv);
+}
 
-    // Scroll Down
-    chatbox.scrollTop = chatbox.scrollHeight;
+function downloadChat(){
 
-    fetch("/get", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: "msg=" + encodeURIComponent(message)
-    })
+let content=
+document
+.getElementById("chatbox")
+.innerText;
 
-    .then(response => response.json())
-    .then(data => {
+let blob=
+new Blob(
+[content],
+{type:'text/plain'}
+);
 
-        let botDiv = document.createElement("div");
-        botDiv.className = "message bot-message";
-        botDiv.innerText = data.response;
+let a=
+document.createElement("a");
 
-        chatbox.appendChild(botDiv);
+a.href=
+URL.createObjectURL(blob);
 
-        chatbox.scrollTop = chatbox.scrollHeight;
-    })
+a.download=
+"chat-history.txt";
 
-    .catch(error => {
+a.click();
 
-        let botDiv = document.createElement("div");
-        botDiv.className = "message bot-message";
-        botDiv.innerText = "Sorry, something went wrong.";
+}
 
-        chatbox.appendChild(botDiv);
-    });
+function sendMessage(){
 
-    userInput.value = "";
+let userInput=
+document.getElementById(
+"userInput"
+);
+
+let message=
+userInput.value.trim();
+
+if(message==="") return;
+
+let chatbox=
+document.getElementById(
+"chatbox"
+);
+
+let currentTime=
+new Date()
+.toLocaleTimeString(
+[],
+{
+hour:'2-digit',
+minute:'2-digit'
+}
+);
+
+let userDiv=
+document.createElement("div");
+
+userDiv.className=
+"message user-message";
+
+userDiv.innerHTML=
+`
+${message}
+<div class="time">
+${currentTime}
+</div>
+`;
+
+chatbox.appendChild(
+userDiv
+);
+
+let typing=
+document.createElement("div");
+
+typing.className=
+"message bot-message";
+
+typing.innerHTML=
+`
+🤖 Typing
+<span class="dot">.</span>
+<span class="dot">.</span>
+<span class="dot">.</span>
+`;
+
+chatbox.appendChild(
+typing
+);
+
+chatbox.scrollTop=
+chatbox.scrollHeight;
+
+fetch("/get",{
+
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/x-www-form-urlencoded"
+},
+
+body:
+"msg="+
+encodeURIComponent(message)
+
+})
+
+.then(response=>
+response.json()
+)
+
+.then(data=>{
+
+typing.remove();
+
+let botDiv=
+document.createElement("div");
+
+botDiv.className=
+"message bot-message";
+
+botDiv.innerHTML=
+`
+${data.response}
+<div class="time">
+${currentTime}
+</div>
+`;
+
+chatbox.appendChild(
+botDiv
+);
+
+chatbox.scrollTop=
+chatbox.scrollHeight;
+
+})
+
+.catch(error=>{
+
+typing.remove();
+
+});
+
+userInput.value="";
+
 }
 
 </script>
 
 </body>
+
 </html>
